@@ -1,5 +1,15 @@
-<div class="maindiv" *ngFor='let user of users$'>
-<h2>{{ user.id }} - {{ user.title}}</h2>
-<p>{{user.body}}</p>
-</div>
-<router-outlet></router-outlet>
+<body>
+
+  <div class="maindiv" *ngFor='let user of users$'>
+    <div class="id">
+      <h2>{{ user.id }}</h2>
+      <h2>{{ user.title}}</h2>
+    </div>
+    <div class="sectxt">
+
+      <!-- <p>{{user.name}}</p> -->
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+</body>
+<!--  {{ user.title}} -->
