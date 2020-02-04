@@ -5,7 +5,7 @@ import { User } from './user.model';
 @Injectable({
   providedIn: 'root'
 })
-export class DataService {
+export class DataService { //!! Insætte API her for use til web
   apiUrl = 'https://jsonplaceholder.typicode.com/posts';
   constructor(private http: HttpClient) { }
   getUsers() {
