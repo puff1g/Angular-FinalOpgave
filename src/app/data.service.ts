@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http'; // need this to connect to api 
 import { User } from './user.model';
 
 @Injectable({
