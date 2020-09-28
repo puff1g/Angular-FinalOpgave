@@ -6,7 +6,7 @@ import { User } from './user.model';
   providedIn: 'root'
 })
 export class DataService { //!! Insætte API her for use til web
-  apiUrl = 'https://jsonplaceholder.typicode.com/posts';
+  apiUrl = 'https://localhost:44312/api/users';
   constructor(private http: HttpClient) { }
   getUsers() {
   return this.http.get<User[]>(this.apiUrl);

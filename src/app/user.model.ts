@@ -1,5 +1,7 @@
 export class User { //!! Data GET here
   userId: number;
-  title: string;
-  body: string;
+  userName: string;
+  userMail: string;
+  password: string;
+  isAdmin: boolean;
 }
