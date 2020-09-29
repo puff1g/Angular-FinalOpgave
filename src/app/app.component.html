@@ -1,14 +1,14 @@
 <body>
-
-  <div class="maindiv" *ngFor='let user of users$'>
-    <div class="id">
-      <h2>{{ user.userName }}</h2>
-      <h2>{{ user.userMail }}</h2>
-    </div>
-    <div class="sectxt">
-
-      <!-- <p>{{user.name}}</p> -->
-    </div>
+<!-- *ngFor='let user of users$' -->
+  
+<h1>Test text inserted here </h1>
+<div class="maindiv" *ngFor=" let user of users$">
+  <!-- <h2>{{user.UserName}} {{user.UserMail}}</h2> -->
+  {{ user | json}}
+  <h1>{{user.UserName}}</h1>
+  <!-- <Button (click)="getUsers()"> Users </Button> -->
+    <!-- {{ users$ | json }} -->
+    
   </div>
   <router-outlet></router-outlet>
 </body>

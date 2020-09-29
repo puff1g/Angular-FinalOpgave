@@ -1,7 +1,22 @@
+xd
 * {
   margin: 0;
   padding: 0;
   left: 0;
   top: 0;
+}
+
+body {
+  background-color: #062E3E;
+}
+
+.maindiv {
+  height: 15vh;
+  width: 50vw;
+  color: #34a4ff;
+}
+
+h2 {
+  color: white;
 }
 /*# sourceMappingURL=app.component.css.map */
