@@ -23,4 +23,8 @@ export class DataService { //!! Insætte API her for use til web
     let params = new HttpParams().set('userId', "1");
     this.posts = this.http.get(this.TEST_URL + '/posts', {params})
   }
+
+  getAll(): Observable<any> {
+    return this.http.get(this.apiUrl)
+  }
 }

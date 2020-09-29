@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from './data.service';
-import { HttpClient, HttpParams } from '@angular/common/http';
 import { User } from './User';
-import {Observable} from 'rxjs';
 
 
 @Component({

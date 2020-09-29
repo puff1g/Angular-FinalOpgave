@@ -1,11 +1,10 @@
 <body>
 <!-- *ngFor='let user of users$' -->
-  
+
 <h1>Test text inserted here </h1>
 <div class="maindiv" *ngFor=" let user of users$">
   <!-- <h2>{{user.UserName}} {{user.UserMail}}</h2> -->
   {{ user | json}}
-  <h1>{{user.UserName}}</h1>
   <!-- <Button (click)="getUsers()"> Users </Button> -->
     <!-- {{ users$ | json }} -->
     
