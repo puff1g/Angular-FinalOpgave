@@ -6,7 +6,7 @@ import {Observable} from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class DataService { //!! Insætte API her for use til web
+export class DataService { //!! Indsætte API her for use til web
   apiUrl = 'https://localhost:44312';
   TEST_URL = "https://jsonplaceholder.typicode.com";
   constructor(private http: HttpClient) { }

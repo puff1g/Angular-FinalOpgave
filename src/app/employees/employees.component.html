@@ -1,0 +1,22 @@
+<div class="container mt-5">
+<h2>List of Employees</h2>
+<button routerLink="employee/add/0" class="btn btn-primary"> Add Employee</button>
+<table>
+      <thead>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th></th>
+      </thead>
+      <tbody>
+      <tr *ngFor="let employee of employees">
+          <td>{{ employee.id}}</td>
+          <td>{{ employee.name}}</td>
+          <td>{{ employee.email}}</td>
+          <td>{{ employee.phone}}</td>
+          <td><a [routerLink] ="['employee/edit',employee.id ]">Edit</a></td>
+      </tr>
+      </tbody>
+
+</div>

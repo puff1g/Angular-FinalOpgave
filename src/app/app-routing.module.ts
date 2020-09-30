@@ -1,7 +1,22 @@
-import { NgModule } from '@angular/core';
+import { EditComponent } from './employees/edit/edit.component';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { EmployeesComponent } from './employees/employees.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path:"",
+    component: EmployeesComponent
+  },
+  {
+    path: "employee/add/:id",
+    component: EditComponent
+  },
+  {
+    path: "employee/add/:id",
+    component: EditComponent
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
