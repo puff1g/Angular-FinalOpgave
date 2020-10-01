@@ -1,13 +1,17 @@
-<body>
-<!-- *ngFor='let user of users$' -->
+<div>
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <a routerLink="Mainpage" class="navbar-brand">BIIITCCHHHH</a>
+    <div class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a routerLink="products" class="nav-link">Products</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="add" class="nav-link">Add</a>
+      </li>
+    </div>
+  </nav>
 
-<h1>Test text inserted here </h1>
-<div class="maindiv" *ngFor=" let user of users$">
-  <!-- <h2>{{user.UserName}} {{user.UserMail}}</h2> -->
-  {{ user | json}}
-  <!-- <Button (click)="getUsers()"> Users </Button> -->
-    <!-- {{ users$ | json }} -->
-    
+  <div class="container mt-3">
+    <router-outlet></router-outlet>
   </div>
-  <router-outlet></router-outlet>
-</body>
+</div>
