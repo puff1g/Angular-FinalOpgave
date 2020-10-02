@@ -1,7 +1,8 @@
+<div class="filloutbox">
 <div class="submit-form">
   <div *ngIf="!submitted">
     <div class="form-group">
-    <label for="name">name</label>
+    <label for="name">Name</label>
     <input
         type="text"
         class="form-control"
@@ -23,7 +24,29 @@
     />
     </div>
 
-    <button (click)="saveProduct()" class="btn btn-success">Submit</button>
+    <div class="form-group">
+    <label for="pris">Pris</label>
+    <input
+        class="form-control"
+        id="pris"
+        required
+        [(ngModel)]="product.pris"
+        name="pris"
+    />
+    </div>
+
+    <div class="form-group">
+    <label for="amount">Amount</label>
+    <input
+        class="form-control"
+        id="amount"
+        required
+        [(ngModel)]="product.amount"
+        name="amount"
+    />
+    </div>
+</div>
+    <button (click)="saveProduct()" class="btn btn-success">Add new product</button>
 </div>
 
   <div *ngIf="submitted">
