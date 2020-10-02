@@ -5,18 +5,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DataService } from './data.service';
-import { ProductAddComponent } from './components/product-add/product-add.component';
+import { ErrorComponent } from './components/error/error.component';
+import { ProductCreateComponent } from './components/product-create/product-create.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
-import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductAddComponent,
+    ErrorComponent,
+    ProductCreateComponent,
     ProductDetailsComponent,
     ProductListComponent,
-    ErrorComponent,
   ],
   imports: [
     BrowserModule,

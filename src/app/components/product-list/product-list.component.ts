@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from "src/app/services/product.service";
-import { HttpClient} from '@angular/common/http';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-product-list',
@@ -9,79 +8,62 @@ import { HttpClient} from '@angular/common/http';
 })
 export class ProductListComponent implements OnInit {
 
-  product: any;
-  currentproduct = null;
+  products: any;
+  currentProduct = null;
   currentIndex = -1;
   name = '';
 
-  constructor(private ProductService: ProductService) { }
+  constructor(private productService: ProductService) { }
 
-  ngOnInit() {
-    this.retrieveProducts();
+  ngOnInit(): void {
+    this.readProducts();
   }
 
-  retrieveProducts() {
-    this.ProductService.getAll()
+  readProducts(): void {
+    this.productService.readAll()
       .subscribe(
-        data => {
-          this.product = data;
-          console.log(data);
+        products => {
+          this.products = products;
+          console.log(products);
         },
         error => {
           console.log(error);
         });
   }
 
-  refreshList() {
-    this.retrieveProducts();
-    this.currentproduct = null;
+  refresh(): void {
+    this.readProducts();
+    this.currentProduct = null;
     this.currentIndex = -1;
   }
 
-  setActiveProduct(product, index) {
-    this.currentproduct = product;
+  setCurrentProduct(product, index): void {
+    this.currentProduct = product;
     this.currentIndex = index;
   }
 
-  removeAllProducts() {
-    this.ProductService.deleteAll()
+  deleteAllProducts(): void {
+    this.productService.deleteAll()
       .subscribe(
         response => {
           console.log(response);
-          this.retrieveProducts();
+          this.readProducts();
         },
         error => {
           console.log(error);
         });
   }
-  showAllProducts()
-  {
 
-  }
-  AlltheProducts(){
-      this.ProductService.getAll().subscribe(
-        (response: any) => {
-          if (response.status == true) {
-            console.log("works")
-          } else {
-            console.log("nop")
-          }
-      });
-  }
-
-  getProducts() {
-    this.searchName()
-  }
-
-  searchName() {
-    this.ProductService.findByName(this.name)
+  searchByName(): void {
+    this.productService.searchByName(this.name)
       .subscribe(
-        data => {
-          this.product = data;
-          console.log(data);
+        products => {
+          this.products = products;
+          console.log(products);
         },
         error => {
           console.log(error);
         });
   }
 }
+

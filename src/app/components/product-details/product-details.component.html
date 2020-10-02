@@ -1,59 +1,65 @@
-<div *ngIf="currentProduct" class="edit-form">
-<h4>Product</h4>
-<form>
-    <div class="form-group">
-    <label for="Name">Name</label>
-    <input
-        type="text"
-        class="form-control"
-        id="Name"
-        [(ngModel)]="currentProduct.Name"
-        name="Name"
-    />
-    </div>
-    <div class="form-group">
-    <label for="description">Description</label>
-    <input
-        type="text"
-        class="form-control"
-        id="description"
-        [(ngModel)]="currentProduct.description"
-        name="description"
-    />
-    </div>
+<div style="width: 500px; margin: auto;">
+  <div *ngIf="currentProduct" class="edit-form">
+    <h4>Product</h4>
+    <form>
+      <div class="form-group">
+        <label for="title">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          [(ngModel)]="currentProduct.name"
+          name="name"
+        />
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input
+          type="text"
+          class="form-control"
+          id="description"
+          [(ngModel)]="currentProduct.description"
+          name="description"
+        />
+      </div>
 
-    <div class="form-group">
-    <label><strong>Status:</strong></label>
-    {{ currentProduct.published ? "Published" : "Pending" }}
-    </div>
-</form>
+      <div class="form-group">
+        <label><strong>Status:</strong></label>
 
-<button
-    class="badge badge-primary mr-2"
-    *ngIf="currentProduct.published"
-    (click)="updatePublished(false)"
->
-    UnPublish
-</button>
-<button
-    *ngIf="!currentProduct.published"
-    class="badge badge-primary mr-2"
-    (click)="updatePublished(true)"
->
-    Publish
-</button>
+      </div>
+    </form>
 
-<button class="badge badge-danger mr-2" (click)="deleteProduct()">
-    Delete
-</button>
+    <button
+      class="badge badge-primary mr-2"
+      *ngIf="currentProduct.available"
+      (click)="setAvailableStatus(false)"
+    >
+      Set Not Available
+    </button>
+    <button
+      *ngIf="!currentProduct.available"
+      class="badge badge-primary mr-2"
+      (click)="setAvailableStatus(true)"
+    >
+      Set Available
+    </button>
 
-<button type="submit" class="badge badge-success" (click)="updateProduct()">
-    Update
-</button>
-<p>{{ message }}</p>
-</div>
+    <button class="badge badge-danger mr-2" (click)="deleteProduct()">
+      Delete
+    </button>
 
-<div *ngIf="!currentProduct">
-<br />
-<p>Cannot access this Product...</p>
+    <button
+      type="submit"
+      class="badge badge-success"
+      (click)="updateProduct()"
+    >
+      Update
+    </button>
+    <p></p>
+  </div>
+
+  <div *ngIf="!currentProduct">
+    <br />
+    <p>This product is not accessible</p>
+  </div>
 </div>
