@@ -32,6 +32,7 @@
         required
         [(ngModel)]="product.pris"
         name="pris"
+        type="number"
     />
     </div>
 
@@ -43,6 +44,7 @@
         required
         [(ngModel)]="product.amount"
         name="amount"
+        type="number"
     />
     </div>
 </div>
@@ -51,6 +53,6 @@
 
   <div *ngIf="submitted">
     <h4>You submitted successfully!</h4>
-    <button class="btn btn-success" (click)="newProduct()">Add</button>
+    <button class="btn btn-success" (click)="newProduct()">Back</button>
 </div>
 </div>

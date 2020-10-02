@@ -12,8 +12,8 @@ export class ProductAddComponent implements OnInit {
   product = {
     name: '',
     description: '',
-    pris: '',
-    amount: '',
+    pris: 0,
+    amount: 0,
     published: false
   };
   submitted = false;
@@ -31,10 +31,12 @@ export class ProductAddComponent implements OnInit {
       pris: this.product.pris,
       amount: this.product.amount,
     };
+    //document.getElementById('lemonjuice').appendChild(this.product.name);
     console.log(data),
     this.ProductService.create(data)
     .subscribe(
       response => {
+        console.log(data)
         console.log(response);
         this.submitted = true;
       },
@@ -48,8 +50,8 @@ export class ProductAddComponent implements OnInit {
       this.product = {
         name: '',
         description: '',
-        pris: '',
-        amount: '',
+        pris: 0,
+        amount: 0,
         published: false
       };
   }

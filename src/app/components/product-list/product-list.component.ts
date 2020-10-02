@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from "src/app/services/product.service";
 import { HttpClient} from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+
+const baseUrl = 'https://localhost:44312/api/products';
 
 @Component({
   selector: 'app-product-list',
@@ -14,46 +18,13 @@ export class ProductListComponent implements OnInit {
   currentIndex = -1;
   name = '';
 
-  constructor(private ProductService: ProductService) { }
+  constructor(private ProductService: ProductService, private http: HttpClient) { }
 
   ngOnInit() {
-    this.retrieveProducts();
+
   }
 
-  retrieveProducts() {
-    this.ProductService.getAll()
-      .subscribe(
-        data => {
-          this.product = data;
-          console.log(data);
-        },
-        error => {
-          console.log(error);
-        });
-  }
-
-  refreshList() {
-    this.retrieveProducts();
-    this.currentproduct = null;
-    this.currentIndex = -1;
-  }
-
-  setActiveProduct(product, index) {
-    this.currentproduct = product;
-    this.currentIndex = index;
-  }
-
-  removeAllProducts() {
-    this.ProductService.deleteAll()
-      .subscribe(
-        response => {
-          console.log(response);
-          this.retrieveProducts();
-        },
-        error => {
-          console.log(error);
-        });
-  }
+  
   showAllProducts()
   {
 
@@ -70,7 +41,10 @@ export class ProductListComponent implements OnInit {
   }
 
   getProducts() {
-    this.searchName()
+    let test101 = this.product = this.http.get(baseUrl)
+
+    console.log(test101)
+    console.log(this.http.get(baseUrl))
   }
 
   searchName() {

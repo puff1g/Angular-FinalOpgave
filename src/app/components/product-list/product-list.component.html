@@ -18,49 +18,44 @@
     </div>
     </div>
 </div>
+
+<div> </div>
+
 <div class="col-md-6">
-    <h4>Products List</h4>
-    <ul class="list-group">
-    <li
-        class="list-group-item"
-        *ngFor="let Product of Product; let i = index"
-        [class.active]="i == currentIndex"
-        (click)="setActiveProduct(Product, i)"
-    >
-        {{ Product.name }}
-    </li>
-    </ul>
 
     <button class="m-3 btn btn-sm btn-danger" (click)="removeAllProducts()">
     Remove All
     </button>
-    <button class="m-3 btn btn-sm btn-danger" (click)="AlltheProducts()">
+    <button class="m-3 btn btn-sm btn-danger" (click)="getProducts()">
     Show All
     </button>
 </div>
-<div class="col-md-6">
-    <div *ngIf="currentProduct">
-    <h4>Product</h4>
-    <div>
-        <label><strong>name:</strong></label> {{ currentProduct.name }}
-    </div>
-    <div>
-        <label><strong>Description:</strong></label>
-        {{ currentProduct.description }}
-    </div>
-    <div>
-        <label><strong>Status:</strong></label>
-        {{ currentProduct.published ? "Published" : "Pending" }}
-    </div>
 
-    <a class="badge badge-warning" href="/products/{{ currentProduct.id }}">
-        Edit
-    </a>
-    </div>
-
-    <div *ngIf="!currentProduct">
-    <br />
-    <p>Please click on a Product...</p>
-    </div>
+<div class="container">
+  <div class="row">
+    <table class="table table-fixed">
+      <thead>
+        <tr>
+          <th class="col-xs-1">Id</th>
+          <th class="col-xs-2">Name</th>
+          <th class="col-xs-2">description</th>
+          <th class="col-xs-2">pris</th>
+          <th class="col-xs-2">amount</th>
+          <th class="col-xs-3">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of product | async">
+          <td class="col-xs-1">{{product.Id | json}} </td>
+          <td class="col-xs-2">{{product.name | json}} </td>
+          <td class="col-xs-2">{{product.description | json}} </td>
+          <td class="col-xs-2">{{product.pris | json}} </td>
+          <td class="col-xs-2">{{product.amount | json}} </td>
+          <td class="col-xs-3"><button>U</button> <button>D</button></td>
+        </tr>
+        
+      </tbody>
+    </table>
+  </div>
 </div>
 </div>
