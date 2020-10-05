@@ -1,3 +1,4 @@
+import { HomepageComponent } from './homepage/homepage.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ErrorComponent } from './components/error/error.component';
@@ -10,10 +11,10 @@ const routes: Routes = [
   {path: 'products', component: ProductListComponent},
   {path: 'products/:id', component: ProductDetailsComponent},
   {path: 'add', component: ProductAddComponent},
+  {path: 'home', component: HomepageComponent},
 
 
 
-  
   {path: '**', component: ErrorComponent}
 ];
 
