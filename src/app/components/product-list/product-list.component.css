@@ -2,9 +2,9 @@
     text-align: left;
     max-width: 750px;
     margin: auto;
-  }
+}
 
-  .table-fixed {
+.table-fixed {
     background-color: #fbfbfb;
     width: 100%;
 }
@@ -23,8 +23,17 @@
     background-color:#159bd0;
     border-color:#0881b1;
     float: left;
-	  color:#fff;
+	color:#fff;
 }
 .read_article{
 	text-align:center;
+}
+
+.update-btn{
+    background-color: yellow;
+    border: none;
+}
+.delete-btn{
+    background-color: red;
+    border: none;
 }

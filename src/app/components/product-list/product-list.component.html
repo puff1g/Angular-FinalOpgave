@@ -36,9 +36,9 @@
     <table class="table table-fixed">
       <thead>
         <tr>
-          <th class="col-xs-1">Id</th>
+          
           <th class="col-xs-2">Name</th>
-          <th class="col-xs-2">description</th>
+          <th class="col-xs-3">description</th>
           <th class="col-xs-2">pris</th>
           <th class="col-xs-2">amount</th>
           <th class="col-xs-3">Actions</th>
@@ -46,12 +46,12 @@
       </thead>
       <tbody>
         <tr *ngFor="let product of product | async">
-          <td class="col-xs-1">{{product.Id | json}} </td>
+          
           <td class="col-xs-2">{{product.name | json}} </td>
-          <td class="col-xs-2">{{product.description | json}} </td>
+          <td class="col-xs-3">{{product.description | json}} </td>
           <td class="col-xs-2">{{product.pris | json}} </td>
           <td class="col-xs-2">{{product.amount | json}} </td>
-          <td class="col-xs-3"><button>U</button> <button>D</button></td>
+          <td class="col-xs-3"><button class="update-btn">U</button> <button class="delete-btn">D</button></td>
         </tr>
         
       </tbody>
