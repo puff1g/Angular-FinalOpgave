@@ -32,9 +32,8 @@ export class ProductService {
   deleteAll() {
     return this.http.delete(baseUrl);
   }
-
-  findByName(Name) {
-    return this.http.get(`${baseUrl}?Name=${Name}`);
+  searchName() {
+    return this.http.get(`${baseUrl}?Name=${name}`);
   }
+  
 }
-

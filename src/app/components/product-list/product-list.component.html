@@ -16,6 +16,7 @@
         Search
         </button>
     </div>
+    
     </div>
 </div>
 
@@ -23,12 +24,7 @@
 
 <div class="col-md-6">
 
-    <button class="m-3 btn btn-sm btn-danger" (click)="removeAllProducts()">
-    Remove All
-    </button>
-    <button class="m-3 btn btn-sm btn-danger" (click)="getProducts()">
-    Show All
-    </button>
+    
 </div>
 
 <div class="container">
@@ -51,7 +47,7 @@
           <td class="col-xs-3">{{product.description | json}} </td>
           <td class="col-xs-2">{{product.pris | json}} </td>
           <td class="col-xs-2">{{product.amount | json}} </td>
-          <td class="col-xs-3"><button class="update-btn">U</button> <button class="delete-btn">D</button></td>
+          <td class="col-xs-3"><button class="update-btn">U</button> <button type="button" class="delete-btn" (click)="remove(name)">D</button></td>
         </tr>
         
       </tbody>

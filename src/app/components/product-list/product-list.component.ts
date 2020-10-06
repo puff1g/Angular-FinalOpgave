@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from "src/app/services/product.service";
 import { HttpClient} from '@angular/common/http';
-import { Observable } from 'rxjs';
-
+import { Observable, of } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 
 const baseUrl = 'https://localhost:44312/api/products';
 
@@ -21,7 +21,7 @@ export class ProductListComponent implements OnInit {
   constructor(private ProductService: ProductService, private http: HttpClient) { }
 
   ngOnInit() {
-
+    this.getProducts()
   }
 
   
@@ -40,15 +40,20 @@ export class ProductListComponent implements OnInit {
       });
   }
 
+  
   getProducts() {
     let test101 = this.product = this.http.get(baseUrl)
 
     console.log(test101)
     console.log(this.http.get(baseUrl))
   }
+  delete(product: ProductService): void {
+    this.product = this.product.filter(h => h !== product);
+    this.ProductService.delete(product).subscribe();
+  }
 
   searchName() {
-    this.ProductService.findByName(this.name)
+    this.ProductService.searchName()
       .subscribe(
         data => {
           this.product = data;
@@ -56,6 +61,36 @@ export class ProductListComponent implements OnInit {
         },
         error => {
           console.log(error);
-        });
+        }); 
   }
+  updateList(id: number, property: string, event: any) {
+    const editField = event.target.textContent;
+    this.product[id][property] = editField;
+  }
+
+  remove(name: any) {
+    this.product.push(this.product[name]);
+    this.product.splice(name, 1);
+  }
+
+  add() {
+    if (this.product.length > 0) {
+      const person = this.product[0];
+      this.product.push(person);
+      this.product.splice(0, 1);
+    }
+  }
+  
 }
+/* searchHeroes(term: string): Observable<Hero[]> {
+    if (!term.trim()) {
+      // if not search term, return empty hero array.
+      return of([]);
+    }
+    return this.http.get<Hero[]>(`${this.heroesUrl}/?name=${term}`).pipe(
+      tap(_ => this.log(`found heroes matching "${term}"`)),
+      catchError(this.handleError<Hero[]>('searchHeroes', []))
+    );
+  } */
+
+  
