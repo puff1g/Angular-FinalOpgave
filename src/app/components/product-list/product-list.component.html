@@ -1,40 +1,46 @@
 <div class="list row">
-<div class="col-md-8">
-    <div class="input-group mb-3">
-    <input
+  <div class="col-md-8">
+    <div class="input-group mb-4">
+      <input
         type="text"
         class="form-control"
         placeholder="Search by name"
         [(ngModel)]="name"
-    />
-    <div class="input-group-append">
+      />
+      <div class="input-group-append">
         <button
-        class="btn btn-outline-secondary"
-        type="button"
-        (click)="searchName()"
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="searchByName()"
         >
-        Search
+          Search
         </button>
+      </div>
     </div>
-    
-    </div>
-</div>
+  </div>
+  <div class="col-md-6">
+    <h4>Product List</h4>
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let product of products; let i = index"
+        [class.active]="i == currentIndex"
+        (click)="setCurrentProduct(product, i)"
+      >
 
-<div> </div>
+      </li>
+    </ul>
 
-<div class="col-md-6">
-
-    
 </div>
 
 <div class="container">
   <div class="row">
     <table class="table table-fixed">
       <thead>
-        <tr>
-          
+        <tr ng-repeat="product in List">
+          <th class="col-xs-1">Id</th>
           <th class="col-xs-2">Name</th>
-          <th class="col-xs-3">description</th>
+          <th class="col-xs-2">description</th>
           <th class="col-xs-2">pris</th>
           <th class="col-xs-2">amount</th>
           <th class="col-xs-3">Actions</th>
@@ -42,16 +48,15 @@
       </thead>
       <tbody>
         <tr *ngFor="let product of product | async">
-          
-          <td class="col-xs-2">{{product.name | json}} </td>
-          <td class="col-xs-3">{{product.description | json}} </td>
-          <td class="col-xs-2">{{product.pris | json}} </td>
-          <td class="col-xs-2">{{product.amount | json}} </td>
-          <td class="col-xs-3"><button class="update-btn">U</button> <button type="button" class="delete-btn" (click)="remove(name)">D</button></td>
+          <td class="col-xs-1 product_td_id">{{product.productID | json}} </td>
+          <td class="col-xs-2 product_td_name" contenteditable>{{product.name | json}} </td>
+          <td class="col-xs-2 product_td_desc" contenteditable>{{product.description | json}} </td>
+          <td class="col-xs-2 product_td_pris" contenteditable>{{product.pris | json}} </td>
+          <td class="col-xs-2 product_td_amount" contenteditable>{{product.amount | json}} </td>
+          <td class="col-xs-3"> <button class="update-btn" id="fisk" (click)="updateList(product.productID, product.name, product.description, product.pris , product.amount)">U</button> 
+                                <button class="delete-btn" (click)="deleteProduct(product.productID)">D</button></td>
         </tr>
-        
       </tbody>
     </table>
   </div>
-</div>
 </div>

@@ -13,20 +13,23 @@ export class ProductService {
     return this.http.get(baseUrl);
   }
 
-  get(id) {
-    return this.http.get(`${baseUrl}/${id}`);
+  get(productID) {
+    return this.http.get(`${baseUrl}/${productID}`);
   }
 
   create(data) {
     return this.http.post(baseUrl, data);
   }
 
-  update(id, data) {
-    return this.http.put(`${baseUrl}/${id}`, data);
+  update(productID, data) {
+    return this.http.put(`${baseUrl}/${productID}`, data);
   }
 
-  delete(id) {
-    return this.http.delete(`${baseUrl}/${id}`);
+  delete(productID) {
+    return this.http.delete(`${baseUrl}/${productID}`);
+  }
+  deleteN(productID){
+    return this.http.delete(`${baseUrl}/${productID}`) 
   }
 
   deleteAll() {
@@ -37,3 +40,4 @@ export class ProductService {
   }
   
 }
+  

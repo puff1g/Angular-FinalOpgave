@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { ProductService } from "src/app/services/product.service";
 import { HttpClient} from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-
+import { ActivatedRoute, Router } from '@angular/router';
 const baseUrl = 'https://localhost:44312/api/products';
 
 @Component({
@@ -24,7 +24,6 @@ export class ProductListComponent implements OnInit {
     this.getProducts()
   }
 
-  
   showAllProducts()
   {
 
@@ -42,11 +41,11 @@ export class ProductListComponent implements OnInit {
 
   
   getProducts() {
-    let test101 = this.product = this.http.get(baseUrl)
-
-    console.log(test101)
+    this.product = this.http.get(baseUrl)
+    console.log("works")
     console.log(this.http.get(baseUrl))
   }
+
   delete(product: ProductService): void {
     this.product = this.product.filter(h => h !== product);
     this.ProductService.delete(product).subscribe();
@@ -63,9 +62,18 @@ export class ProductListComponent implements OnInit {
           console.log(error);
         }); 
   }
-  updateList(id: number, property: string, event: any) {
-    const editField = event.target.textContent;
-    this.product[id][property] = editField;
+  updateList(id: any, name: any, desc: any, pris: any, amount: any) {
+    
+    // console.log(id);
+    // console.log(name);
+    // console.log(desc);
+    // console.log(pris);
+    var elm = document.querySelector('.update-btn').closest('tr'); // wait tror lowkeey vi overkomplicere det her xD
+    var price = document.getElementById('fisk').closest('tr .product_td_id').innerHTML; // f u gey
+    console.log(price);
+    // this.elRef.nativeElement.className = "yourClass" 
+    //const editField = event.target.textContent;
+    //this.product[id][property] = editField; 
   }
 
   remove(name: any) {
@@ -80,7 +88,18 @@ export class ProductListComponent implements OnInit {
       this.product.splice(0, 1);
     }
   }
-  
+  deleteProduct(productID: any) {
+    console.log(productID); // still undifined....
+    this.ProductService.deleteN(productID) // det er en fejl ik tænk på den
+    .subscribe(
+      response => {
+        console.log("works?")
+          console.log(response);
+        },
+        error => {
+          console.log(error);
+        });
+  }
 }
 /* searchHeroes(term: string): Observable<Hero[]> {
     if (!term.trim()) {

@@ -66,9 +66,11 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   deleteProduct() {
-    this.ProductService.delete(this.currentProduct.id)
-      .subscribe(
-        response => {
+    this.ProductService.get(this.currentProduct.Id)
+    this.ProductService.delete(this.currentProduct.Id)
+    .subscribe(
+      response => {
+        console.log("works?")
           console.log(response);
           this.router.navigate(['/Products']);
         },
