@@ -51,6 +51,10 @@ export class ProductDetailsComponent implements OnInit {
         error => {
           console.log(error);
         });
+
+
+
+        console.log('update published');
   }
 
   updateProduct() {
@@ -63,6 +67,9 @@ export class ProductDetailsComponent implements OnInit {
         error => {
           console.log(error);
         });
+
+
+        console.log('update normal');
   }
 
   deleteProduct() {

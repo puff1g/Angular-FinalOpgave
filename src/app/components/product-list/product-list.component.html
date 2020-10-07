@@ -53,8 +53,10 @@
           <td class="col-xs-2 product_td_desc" contenteditable>{{product.description | json}} </td>
           <td class="col-xs-2 product_td_pris" contenteditable>{{product.pris | json}} </td>
           <td class="col-xs-2 product_td_amount" contenteditable>{{product.amount | json}} </td>
-          <td class="col-xs-3"> <button class="update-btn" id="fisk" (click)="updateList(product.productID, product.name, product.description, product.pris , product.amount)">U</button> 
-                                <button class="delete-btn" (click)="deleteProduct(product.productID)">D</button></td>
+          <td class="col-xs-3">
+              <button class="update-btn" id="fisk" (click)="updateList($event, product.productID, product.name, product.description, product.pris , product.amount)">U</button> 
+              <button class="delete-btn" (click)="deleteProduct(product.productID)">D</button>
+          </td>
         </tr>
       </tbody>
     </table>

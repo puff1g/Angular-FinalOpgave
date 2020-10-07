@@ -62,19 +62,56 @@ export class ProductListComponent implements OnInit {
           console.log(error);
         }); 
   }
-  updateList(id: any, name: any, desc: any, pris: any, amount: any) {
+  updateList(event: any, id: any, name: any, desc: any, pris: any, amount: any) {
+
+    var target = event.target || event.srcElement || event.currentTarget;
+    var idAttr = target.attributes.id;
+    var value = idAttr.nodeValue;
+
     
-    // console.log(id);
-    // console.log(name);
-    // console.log(desc);
-    // console.log(pris);
-    var elm = document.querySelector('.update-btn').closest('tr'); // wait tror lowkeey vi overkomplicere det her xD
-    var price = document.getElementById('fisk').closest('tr .product_td_id').innerHTML; // f u gey
-    console.log(price);
-    // this.elRef.nativeElement.className = "yourClass" 
-    //const editField = event.target.textContent;
-    //this.product[id][property] = editField; 
+    
+    var row = {
+      "productID": parseInt(document.getElementById(value).closest('tr').children[0].innerHTML),
+      "name": document.getElementById(value).closest('tr').children[1].innerHTML,
+      "description": document.getElementById(value).closest('tr').children[2].innerHTML,
+      "pris": parseInt(document.getElementById(value).closest('tr').children[3].innerHTML),
+      "amount": parseInt(document.getElementById(value).closest('tr').children[4].innerHTML),
+    };
+
+    // console.log(row);
+
+    this.updatePublished(document.getElementById(value).closest('tr').children[0].innerHTML, row);
+ 
   }
+
+  // updateProduct(row: any) {
+  //   console.log(row.productID);
+  //   var test = this.ProductService.update(row.productID, row)
+  //     console.log(test);
+  // }
+
+  updatePublished(id, row) {
+
+    console.log(row);
+
+    this.ProductService.update(id, row)
+      .subscribe(
+        response => {
+          this.product.published = status;
+          console.log(response);
+          console.log('we got a response!')
+        },
+        error => {
+          console.log(error); //  this is what u get
+          console.log('i am a failure')
+        });
+
+
+
+        console.log('update published');
+  }
+
+
 
   remove(name: any) {
     this.product.push(this.product[name]);
